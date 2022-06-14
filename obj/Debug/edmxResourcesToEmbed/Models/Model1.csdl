@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SQLdbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="SQLdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserAccounts" EntityType="SQLdbModel.UserAccount" />
+    <EntitySet Name="Regist_table" EntityType="SQLdbModel.Regist_table" />
+  </EntityContainer>
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Regist_table">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="ConfierPass" />
+    </Key>
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Password" Nullable="false" />
+    <Property Type="Int32" Name="ConfierPass" Nullable="false" />
+  </EntityType>
+</Schema>

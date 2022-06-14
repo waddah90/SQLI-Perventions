@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SQLdbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SQLdbModelStoreContainer">
+          <EntitySet Name="Regist_table" EntityType="SQLdbModel.Store.Regist_table" store:Type="Tables" store:Schema="dbo" store:Name="Regist_table">
+            <DefiningQuery>SELECT 
+      [Regist_table].[Name] AS [Name], 
+      [Regist_table].[Address] AS [Address], 
+      [Regist_table].[Email] AS [Email], 
+      [Regist_table].[Password] AS [Password], 
+      [Regist_table].[ConfierPass] AS [ConfierPass]
+      FROM [dbo].[Regist_table] AS [Regist_table]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserAccount" EntityType="SQLdbModel.Store.UserAccount" store:Type="Tables" store:Schema="dbo" store:Name="UserAccount">
+            <DefiningQuery>SELECT 
+      [UserAccount].[UserName] AS [UserName], 
+      [UserAccount].[Password] AS [Password]
+      FROM [dbo].[UserAccount] AS [UserAccount]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SQLdb.dbo.Regist_table' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Regist_table">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="ConfierPass" />
+          </Key>
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="int" Nullable="false" />
+          <Property Name="ConfierPass" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SQLdb.dbo.UserAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SQLdbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SQLdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserAccounts" EntityType="SQLdbModel.UserAccount" />
+          <EntitySet Name="Regist_table" EntityType="SQLdbModel.Regist_table" />
+        </EntityContainer>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Regist_table">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="ConfierPass" />
+          </Key>
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Password" Nullable="false" />
+          <Property Type="Int32" Name="ConfierPass" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SQLdbModelStoreContainer" CdmEntityContainer="SQLdbEntities">
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="SQLdbModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regist_table">
+            <EntityTypeMapping TypeName="SQLdbModel.Regist_table">
+              <MappingFragment StoreEntitySet="Regist_table">
+                <ScalarProperty Name="ConfierPass" ColumnName="ConfierPass" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

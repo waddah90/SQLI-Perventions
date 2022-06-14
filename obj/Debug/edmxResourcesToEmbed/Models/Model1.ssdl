@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SQLdbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SQLdbModelStoreContainer">
+    <EntitySet Name="Regist_table" EntityType="SQLdbModel.Store.Regist_table" store:Type="Tables" store:Schema="dbo" store:Name="Regist_table">
+      <DefiningQuery>SELECT 
+      [Regist_table].[Name] AS [Name], 
+      [Regist_table].[Address] AS [Address], 
+      [Regist_table].[Email] AS [Email], 
+      [Regist_table].[Password] AS [Password], 
+      [Regist_table].[ConfierPass] AS [ConfierPass]
+      FROM [dbo].[Regist_table] AS [Regist_table]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserAccount" EntityType="SQLdbModel.Store.UserAccount" store:Type="Tables" store:Schema="dbo" store:Name="UserAccount">
+      <DefiningQuery>SELECT 
+      [UserAccount].[UserName] AS [UserName], 
+      [UserAccount].[Password] AS [Password]
+      FROM [dbo].[UserAccount] AS [UserAccount]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'SQLdb.dbo.Regist_table' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Regist_table">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="ConfierPass" />
+    </Key>
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="int" Nullable="false" />
+    <Property Name="ConfierPass" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'SQLdb.dbo.UserAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>
